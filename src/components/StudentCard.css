@@ -1,0 +1,29 @@
+.student-card {
+  background-color: #b9d6f2;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  margin: 1rem;
+}
+
+.student-card h2,
+.student-card p {
+  color: #000;
+}
+
+.student-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.student-card-header p {
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.student-card-header-button {
+  display: flex;
+  gap: 0.3rem;
+}
