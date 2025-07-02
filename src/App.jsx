@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
@@ -10,6 +9,8 @@ import AllCampus from "./components/AllCampus";
 import AllStudents from "./components/AllStudents";
 import SingleCampus from "./components/SingleCampus";
 import SingleStudent from "./components/SingleStudent";
+import HomePage from "./components/Homepage";
+import axios from "axios";
 
 
 const App = () => {
@@ -51,11 +52,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/all-campuses" element={<AllCampus campuses={campuses} fetchAllCampuses={fetchAllCampuses} />} />
-          <Route path="/all-students" element={<AllStudents fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/all-students" element={<AllStudents students = {students} fetchAllCampuses={fetchAllCampuses} />} />
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/campus/:id" element={<SingleCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/student/:id" element={<SingleStudent campuses = {campuses} student = {students} fetchAllStudents={fetchAllStudents}/>} />
         </Routes>
       </div>
     </div>
