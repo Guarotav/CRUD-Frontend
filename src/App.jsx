@@ -1,10 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import AddCampus from "./components/AddCampus";
 import AddStudent from "./components/AddStudent";
+import AllCampus from "./components/AllCampus";
+import AllStudents from "./components/AllStudents";
+import SingleCampus from "./components/SingleCampus";
+import SingleStudent from "./components/SingleStudent";
+import HomePage from "./components/Homepage";
+import axios from "axios";
+
 
 const App = () => {
   // Initialize state
@@ -40,12 +47,16 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
+        <h1>College Campuses!🏫</h1>
 
         <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/all-students" element={<AllStudents campus = {campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/campus/:id" element={<SingleCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/student/:id" element={<SingleStudent campuses = {campuses} student = {students} fetchAllStudents={fetchAllStudents}/>} />
         </Routes>
       </div>
     </div>
