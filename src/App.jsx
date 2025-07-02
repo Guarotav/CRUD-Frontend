@@ -1,18 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import AddCampus from "./components/AddCampus";
+import AddStudent from "./components/AddStudent";
+import AllCampus from "./components/AllCampus";
+import AllStudents from "./components/AllStudents";
+import SingleCampus from "./components/SingleCampus";
+import SingleStudent from "./components/SingleStudent";
+import HomePage from "./components/Homepage";
+import axios from "axios";
+
 
 const App = () => {
+  // Initialize state
+  const [campuses, setCampuses] = useState([]);
+  const [students, setStudents] = useState([]);
+
+  // Request campus data
+  async function fetchAllCampuses() {
+    try {
+      const response = await axios.get("http://localhost:8080/api/campuses");
+      setCampuses(response.data);
+    } catch (error) {
+      console.error("Error fetching campuses:", error);
+    }
+  }
+
+  // Request student data
+  async function fetchAllStudents() {
+    try {
+      const response = await axios.get("http://localhost:8080/api/students");
+      setStudents(response.data);
+    } catch (error) {
+      console.error("Error fetching students:", error);
+    }
+  }
+
+  useEffect(() => {
+      fetchAllCampuses();
+      fetchAllStudents();
+    }, []);
+
   return (
     <div>
       <NavBar />
       <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
+        <h1>College Campuses!🏫</h1>
 
-        <Routes>{/* Currently, we don't have any routes defined */}</Routes>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/all-campuses" element={<AllCampus campuses={campuses} fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/all-students" element={<AllStudents students = {students} fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/campus/:id" element={<SingleCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/student/:id" element={<SingleStudent campuses = {campuses} student = {students} fetchAllStudents={fetchAllStudents}/>} />
+        </Routes>
       </div>
     </div>
   );
