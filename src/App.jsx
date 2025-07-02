@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import AddCampus from "./components/AddCampus";
 import AddStudent from "./components/AddStudent";
+import AllCampus from "./components/AllCampus";
+import AllStudents from "./components/AllStudents";
+import SingleCampus from "./components/SingleCampus";
+import SingleStudent from "./components/SingleStudent";
+
 
 const App = () => {
   // Initialize state
@@ -44,6 +50,7 @@ const App = () => {
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
 
         <Routes>
+          
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
         </Routes>

@@ -1,1 +1,16 @@
-//Include a delete button
+
+
+
+const AddStudent = () =>{
+
+return (
+
+
+<div>
+
+</div>
+
+
+);
+
+};
