@@ -3,12 +3,12 @@ import axios from "axios";
 import "./CampusCardStyles.css";
 import {Link} from "react-router";
 
-const CampusCard =({campuses, students, fetchAllCampuses}) =>{
+const CampusCard =({campus, students, fetchAllCampuses}) =>{
 
 const handleDeleteCampus = async () => {
     try {
 
-        await axios.delete (`"http://localhost:8080/api/campuses/${campuses.id}"`)
+        await axios.delete (`"http://localhost:8080/api/campuses/${campus.id}"`)
         fetchAllCampuses();
     }   catch(err){
         console.error("Error completing task:", err);
@@ -16,11 +16,7 @@ const handleDeleteCampus = async () => {
 
 };
 
-
-  const studentsInCampus = students.filter((student) => student.campusId === campuses.id);
-
-
-
+  const studentsInCampus = students.filter((student) => student.CampusId === campus.id);
 
 
 return (

@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 
 
 
-const AllCampus = ({campuses, fetchAllCampuses}) =>{
+const AllCampus = ({campuses, students, fetchAllCampuses}) =>{
 
 
 return (
@@ -12,7 +12,7 @@ return (
     <h2> Campuses </h2>
 {campuses.length > 0 ? (
         campuses.map((campus) => (
-          <CampusCard key={campus.id} campus={campus} fetchAllCampuses={fetchAllCampuses} />
+          <CampusCard key={campus.id} campus ={campus} students = {students} fetchAllCampuses={fetchAllCampuses} />
         ))
       ) : (
         <p>No Campus found</p>
