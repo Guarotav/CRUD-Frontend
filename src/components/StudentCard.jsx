@@ -2,8 +2,12 @@ import React from "react";
 import axios from "axios";
 import "./StudentCard.css";
 import { Link } from "react-router-dom";
+import {useParams} from "react-router";
 
 const StudentCard = ({ campuses, students, fetchAllStudents }) => {
+  const params = useParams();
+  const id = Number(params.id);
+
   const handleDeleteStudent = async () => {
     try {
       await axios.delete(`http://localhost:8080/api/students/${students.id}`);
@@ -14,6 +18,7 @@ const StudentCard = ({ campuses, students, fetchAllStudents }) => {
   };
 
 const selectedStudent = students.find((student) => student.id === id);
+console.log(selectedStudent);
 const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
 
   return (

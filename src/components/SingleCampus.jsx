@@ -1,5 +1,8 @@
 import React from "react";
 import CampusCard from "./CampusCard";
+import StudentCard from "./StudentCard";
+import {useParams} from "react-router";
+
 
 const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
   const params = useParams();
@@ -7,11 +10,11 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
   // useEffect(() => {
   //   // Fetch the ducks here
   // }, []);
-  const selectedCampus = tasks.find((task) => task.id === id);
+  const selectedCampus = campuses.find((campus) => campus.id === id);
   //   const selectedStudents = users.find((user) => user.id ===  selectedCampus.userId);
   //   const selectedTaskUserName = selectedStudents.name;
 
-  const handleDeleteSelectedTask = async () => {
+  const handleDeleteSelectedCampus = async () => {
     try {
       await axios.delete(
         `http://localhost:8080/api/tasks/${selectedCampus.id}`
@@ -30,7 +33,7 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
       <div className="single-campus-header">
         <h2>{selectedCampus.name}</h2>
         <div className="task-card-header-buttons">
-          <p onClick={handleDeleteSelectedTask}>🗑️</p>
+          <p onClick={handleDeleteSelectedCampus}>🗑️</p>
         </div>
       </div>
       <p>{selectedCampus.description}</p>
@@ -40,6 +43,7 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
           studentsInCampus.map((student) => (
             <StudentCard
               key={student.id}
+              campuses = {campuses}
               student={student}
               fetchAllStudents={fetchAllStudents}
             />
@@ -51,3 +55,5 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
     </div>
   );
 };
+
+export default SingleCampus;

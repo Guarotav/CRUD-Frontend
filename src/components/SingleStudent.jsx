@@ -33,3 +33,6 @@ const SingleStudent = ({ campuses, students, fetchAllCampuses }) => {
 };
 
 
+export default SingleStudent;
+
+
