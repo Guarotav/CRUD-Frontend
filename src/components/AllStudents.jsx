@@ -13,7 +13,7 @@ const AllStudents = ({ campuses, students, fetchAllStudents }) => {
           <StudentCard
             key={student.id}
             campuses = {campuses}
-            students ={students}
+            student = {student}
             fetchAllStudents={fetchAllStudents}
           />
         ))
