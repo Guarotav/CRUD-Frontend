@@ -1,10 +1,41 @@
-import React from "react";
+import React, { useState } from "react";
 import { createRoot } from "react-dom/client";
 import "./AppStyles.css";
 import NavBar from "./components/NavBar";
-import { BrowserRouter as Router, Routes } from "react-router";
+import { BrowserRouter as Router, Routes, Route } from "react-router";
+import AddCampus from "./components/AddCampus";
+import AddStudent from "./components/AddStudent";
 
 const App = () => {
+  // Initialize state
+  const [campuses, setCampuses] = useState([]);
+  const [students, setStudents] = useState([]);
+
+  // Request campus data
+  async function fetchAllCampuses() {
+    try {
+      const response = await axios.get("http://localhost:8080/api/campuses");
+      setCampuses(response.data);
+    } catch (error) {
+      console.error("Error fetching campuses:", error);
+    }
+  }
+
+  // Request student data
+  async function fetchAllStudents() {
+    try {
+      const response = await axios.get("http://localhost:8080/api/students");
+      setStudents(response.data);
+    } catch (error) {
+      console.error("Error fetching students:", error);
+    }
+  }
+
+  useEffect(() => {
+      fetchAllCampuses();
+      fetchAllStudents();
+    }, []);
+
   return (
     <div>
       <NavBar />
@@ -12,7 +43,10 @@ const App = () => {
         <h1>Hello React!</h1>
         <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
 
-        <Routes>{/* Currently, we don't have any routes defined */}</Routes>
+        <Routes>
+          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
+        </Routes>
       </div>
     </div>
   );
