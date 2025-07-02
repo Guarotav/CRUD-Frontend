@@ -46,11 +46,14 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        <h1>Hello React!</h1>
-        <img className="react-logo" src="/react-logo.svg" alt="React Logo" />
+        <h1>College Campuses!🏫</h1>
 
         <Routes>
-          
+          <Route path="/" element={<HomePage />} />
+          <Route path="/all-campuses" element={<AllCampus campuses={campuses} fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/all-students" element={<AllStudents fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
         </Routes>
