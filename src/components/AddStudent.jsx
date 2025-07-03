@@ -15,11 +15,14 @@ Parameters:
  which are saved to the database.
 */
 
-const AddStudent = ({ fetchAllStudents }) => {
+const AddStudent = ({ campuses, fetchAllStudents }) => {
   // Initialize state to hold user input
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [image, setImage] = useState("");
+  const [gpa, setGpa] = useState(0.0);
+  const [campusId, setCampusId] = useState(0);
 
   // Enable navigation using React-Router
   let navigate = useNavigate();
@@ -33,6 +36,9 @@ const AddStudent = ({ fetchAllStudents }) => {
         firstName,
         lastName,
         email,
+        image,
+        gpa,
+        CampusId:campusId,
       });
       fetchAllStudents(); 
       navigate("/"); // navigate to homepage after submission
@@ -63,6 +69,27 @@ const AddStudent = ({ fetchAllStudents }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <input 
+          type="number"
+          step="0.1"
+          min="0"
+          max="4"
+          placeholder="GPA"
+          value={gpa}
+          onChange={(e) => setGpa(e.target.value)}
+        />
+        <input 
+          type="url"
+          placeholder="Image url"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+        />
+        <select value={campusId} onChange={(e) => setCampusId(e.target.value)}>
+          <option>Select a campus:</option>
+          {campuses.map((campus) => 
+            <option key={campus.id} value={campus.id}>{campus.name}</option>
+          )}
+        </select>
         <button type="submit">Add</button>
       </form>
     </div>

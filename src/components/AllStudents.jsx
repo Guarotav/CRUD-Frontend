@@ -21,7 +21,7 @@ const AllStudents = ({ campuses, students, fetchAllCampuses, fetchAllStudents })
       ) : (
         <p>No Students found</p>
       )}
-      <Link to="/add-students" className="add-btn">
+      <Link to="/add-student" className="add-btn">
         {" "}
         Add Student{" "}
       </Link>
