@@ -28,7 +28,7 @@ return (
             </h2>
             <p>{studentsInCampus.length} student(s)</p>
             <div className = "campus-card-header-button">
-                <p onClick = {handleDeleteCampus}>🗑️</p>
+                <p onClick = {handleDeleteCampus}>🗑️ Delete Campus </p>
             </div>
         </div>
     </div>

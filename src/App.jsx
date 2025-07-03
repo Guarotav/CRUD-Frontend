@@ -57,7 +57,7 @@ const App = () => {
           <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
           <Route path="/all-students" element={<AllStudents campuses = {campuses} students = {students} fetchAllCampuses = {fetchAllCampuses} fetchAllStudents={fetchAllStudents} />} />
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/add-student" element={<AddStudent campuses = {campuses} fetchAllStudents={fetchAllStudents}/>} />
           <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
         </Routes>

@@ -32,8 +32,8 @@ const SingleStudent = ({ campuses, students, fetchAllStudents }) => {
   <div className="single-student-container">
     {/* Student Info Section */}
     <section className="student-info">
-      <img src={selectedStudent.image} alt={selectedStudent.name} />
-      <h2>{selectedStudent.name}</h2>
+      <img src={selectedStudent.image} />
+      <h2>{selectedStudent.firstName} {selectedStudent.lastName}</h2>
       <p><strong>Email:</strong> {selectedStudent.email}</p>
       <p><strong>GPA:</strong> {selectedStudent.gpa}</p>
       <button onClick={handleDeleteStudent}>🗑️ Delete Student</button>

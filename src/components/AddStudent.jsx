@@ -27,18 +27,25 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
   // Enable navigation using React-Router
   let navigate = useNavigate();
 
+
   // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new student to the database
+    console.log(firstName);
+    console.log( lastName) ;
+    console.log(email);
+    console.log( image);
+    console.log(typeof(gpa)) ;
+    console.log( campusId);
     try {
       await axios.post("http://localhost:8080/api/students", {
         firstName,
         lastName,
         email,
         image,
-        gpa,
-        CampusId:campusId,
+        gpa: Number(gpa),
+        CampusId: Number(campusId),
       });
       fetchAllStudents(); 
       navigate("/"); // navigate to homepage after submission
