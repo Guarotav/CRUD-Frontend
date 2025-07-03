@@ -1,18 +1,22 @@
 import React from "react";
 import CampusCard from "./CampusCard";
 import StudentCard from "./StudentCard";
-import {useParams} from "react-router";
+import { useParams, useNavigate } from "react-router";
 
+const SingleCampus = ({ campuses, students, fetchAllCampuses, fetchAllStudents }) => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+  const campusId = Number(id);
 
-const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
-  const params = useParams();
-  const id = Number(params.id);
-  // useEffect(() => {
-  //   // Fetch the ducks here
-  // }, []);
-  const selectedCampus = campuses.find((campus) => campus.id === id);
-  //   const selectedStudents = users.find((user) => user.id ===  selectedCampus.userId);
-  //   const selectedTaskUserName = selectedStudents.name;
+  if (!campuses || campuses.length === 0) {
+    return <p>Loading campus...</p>;
+  }
+
+  const selectedCampus = campuses.find((campus) => campus.id === campusId);
+  if (!selectedCampus) return <p>Campus not found.</p>;
+
+  const studentsInCampus =
+    students?.filter((student) => student.CampusId === selectedCampus.id) || [];
 
   const handleDeleteSelectedCampus = async () => {
     try {
@@ -25,25 +29,29 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
     }
   };
 
-  const studentsInCampus = students.filter(
-    (student) => student.CampusID === selectedCampus.Id
-  );
-  return (
-    <div className={`campusDetails`}>
-      <div className="single-campus-header">
+return (
+    <div className="single-campus-page">
+      {/*Campus Info Card*/}
+      <div className="campus-info-card">
+        <img
+          src={selectedCampus.url}
+          alt={selectedCampus.name}
+          style={{ width: "100%", maxWidth: "600px", borderRadius: "12px", objectFit: "cover" }}
+        />
         <h2>{selectedCampus.name}</h2>
-        <div className="task-card-header-buttons">
-          <p onClick={handleDeleteSelectedCampus}>🗑️</p>
-        </div>
+        <p><strong>Address:</strong> {selectedCampus.address}</p>
+        <p>{selectedCampus.description}</p>
+        <button onClick={handleDeleteSelectedCampus}>🗑️ Delete Campus</button>
       </div>
-      <p>{selectedCampus.description}</p>
-      <div className="display-all-students">
-        {" "}
+
+      {/* Student Card */}
+      <h3>Students in this Campus</h3>
+      <div className="students-container" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
         {studentsInCampus.length > 0 ? (
           studentsInCampus.map((student) => (
             <StudentCard
               key={student.id}
-              campuses = {campuses}
+              campuses={campuses}
               student={student}
               fetchAllStudents={fetchAllStudents}
             />
@@ -55,5 +63,6 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses }) => {
     </div>
   );
 };
+
 
 export default SingleCampus;

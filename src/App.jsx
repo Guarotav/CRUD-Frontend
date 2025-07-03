@@ -33,7 +33,9 @@ const App = () => {
   async function fetchAllStudents() {
     try {
       const response = await axios.get("http://localhost:8080/api/students");
+      console.log("Fetched students:", response.data);
       setStudents(response.data);
+      console.log("Students state updated:", response.data);
     } catch (error) {
       console.error("Error fetching students:", error);
     }
@@ -53,11 +55,11 @@ const App = () => {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
-          <Route path="/all-students" element={<AllStudents campuses = {campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
+          <Route path="/all-students" element={<AllStudents campuses = {campuses} students = {students} fetchAllCampuses = {fetchAllCampuses} fetchAllStudents={fetchAllStudents} />} />
           <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/add-student" element={<AddStudent fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/campus/:id" element={<SingleCampus fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/students/:id" element={<SingleStudent campuses = {campuses} student = {students} fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
+          <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
         </Routes>
       </div>
     </div>

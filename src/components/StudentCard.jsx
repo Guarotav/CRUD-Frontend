@@ -10,6 +10,7 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
 
   const handleDeleteStudent = async () => {
     try {
+      console.log("Delete clicked for student id:", student.id);
       await axios.delete(`http://localhost:8080/api/students/${student.id}`);
       fetchAllStudents();
     } catch (err) {
@@ -28,7 +29,7 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
         </h2>
         <p></p>
         <div className="student-card-header-button">
-          <p onClick={handleDeleteStudent}>🗑️</p>
+          <p onClick={handleDeleteStudent}>🗑️ Delete Student </p>
         </div>
       </div>
       <p>Email: {student.email}</p>
