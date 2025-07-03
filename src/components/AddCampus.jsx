@@ -17,7 +17,9 @@ Parameters:
 const AddCampus = ({ fetchAllCampuses }) => {
   // Initialize state to hold user input
   const [name, setName] = useState("");
+  const [image, setImage] = useState("");
   const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
 
   // Enable navigation using React-Router
   let navigate = useNavigate();
@@ -29,7 +31,9 @@ const AddCampus = ({ fetchAllCampuses }) => {
     try {
       await axios.post("http://localhost:8080/api/campuses", {
         name,
+        image,
         address,
+        description,
       });
       fetchAllCampuses(); 
       navigate("/"); // navigate to homepage after submission
@@ -48,10 +52,21 @@ const AddCampus = ({ fetchAllCampuses }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
+        <input 
+          type="url"
+          placeholder="Image url"
+          value={image}
+          onChange={(e) => setImage(e.target.value)}
+        />
         <textarea
           placeholder="Address"
           value={address}
           onChange={(e) => setAddress(e.target.value)}
+        />
+        <textarea
+          placeholder="Description"
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
         />
         <button type="submit">Add</button>
       </form>
