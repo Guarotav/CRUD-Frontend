@@ -32,7 +32,7 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
         </div>
       </div>
       <p>Email: {student.email}</p>
-      <p>Campus: </p>
+      <p>Campus: {student.CampusId}</p>
     </div>
   );
 };
