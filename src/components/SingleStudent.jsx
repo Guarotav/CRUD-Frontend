@@ -13,7 +13,7 @@ const SingleStudent = ({ campuses, students, fetchAllCampuses }) => {
   
   const handleDeleteSelectedTask = async () => {
     try {
-      await axios.delete(`${API_URL}/api/tasks/${selectedCampus.id}`);
+      await axios.delete(`http://localhost:8080/api/tasks/${selectedCampus.id}`);
       fetchAllTasks();
     } catch (error) {
       console.error("Error deleting task:", error);

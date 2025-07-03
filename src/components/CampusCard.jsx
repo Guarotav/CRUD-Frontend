@@ -8,7 +8,7 @@ const CampusCard =({campus, students, fetchAllCampuses}) =>{
 const handleDeleteCampus = async () => {
     try {
 
-        await axios.delete (`${API_URL}/api/campuses/${campus.id}"`)
+        await axios.delete (`http://localhost:8080/api/campuses/${campus.id}`)
         fetchAllCampuses();
     }   catch(err){
         console.error("Error completing task:", err);

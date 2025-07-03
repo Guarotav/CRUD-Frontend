@@ -27,7 +27,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new campus to the database
     try {
-      await axios.post(`${API_URL}/api/campuses`, {
+      await axios.post("http://localhost:8080/api/campuses", {
         name,
         address,
       });
