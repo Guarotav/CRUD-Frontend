@@ -32,12 +32,6 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new student to the database
-    console.log(firstName);
-    console.log( lastName) ;
-    console.log(email);
-    console.log( image);
-    console.log(typeof(gpa)) ;
-    console.log( campusId);
     try {
       await axios.post("http://localhost:8080/api/students", {
         firstName,
@@ -48,7 +42,7 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
         CampusId: Number(campusId),
       });
       fetchAllStudents(); 
-      navigate("/"); // navigate to homepage after submission
+      navigate("/all-students"); // navigate to homepage after submission
     } catch (error) {
       console.error("Error adding student:", error);
     }
