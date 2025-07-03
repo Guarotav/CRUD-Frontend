@@ -31,6 +31,7 @@ return (
                 <p onClick = {handleDeleteCampus}>🗑️ Delete Campus </p>
             </div>
         </div>
+         <Link to={`/edit-campuses/${campus.id}`}> Edit </Link>
     </div>
 
 )

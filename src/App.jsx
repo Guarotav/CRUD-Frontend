@@ -50,8 +50,6 @@ const App = () => {
     <div>
       <NavBar />
       <div className="app">
-        <h1>College Campuses!🏫</h1>
-
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
@@ -60,8 +58,8 @@ const App = () => {
           <Route path="/add-student" element={<AddStudent campuses = {campuses} fetchAllStudents={fetchAllStudents}/>} />
           <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/edit-students/:id" element={<EditStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/edit-campuses/:id" element={<EditCampus campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/edit-students/:id" element={<EditStudent campuses = {campuses} fetchAllStudents = {fetchAllStudents}/>} />
+          <Route path="/edit-campuses/:id" element={<EditCampus />} />
         </Routes>
       </div>
     </div>
