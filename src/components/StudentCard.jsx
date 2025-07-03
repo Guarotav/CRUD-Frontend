@@ -10,7 +10,7 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
 
   const handleDeleteStudent = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/students/${student.id}`);
+      await axios.delete(`${API_URL}/api/students/${student.id}`);
       fetchAllStudents();
     } catch (err) {
       console.error("Error completing task:", err);

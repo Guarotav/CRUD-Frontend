@@ -29,7 +29,7 @@ const AddStudent = ({ fetchAllStudents }) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new student to the database
     try {
-      await axios.post("http://localhost:8080/api/students", {
+      await axios.post(`${API_URL}/api/students`, {
         firstName,
         lastName,
         email,

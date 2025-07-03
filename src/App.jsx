@@ -13,6 +13,8 @@ import HomePage from "./components/Homepage";
 import axios from "axios";
 
 
+const API_URL = process.env.API_URL ||"http://localhost:8080";
+
 const App = () => {
   // Initialize state
   const [campuses, setCampuses] = useState([]);
@@ -21,7 +23,7 @@ const App = () => {
   // Request campus data
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses");
+      const response = await axios.get(`${API_URL}/api/campuses`);
       setCampuses(response.data);
     } catch (error) {
       console.error("Error fetching campuses:", error);
@@ -31,7 +33,7 @@ const App = () => {
   // Request student data
   async function fetchAllStudents() {
     try {
-      const response = await axios.get("http://localhost:8080/api/students");
+      const response = await axios.get(`${API_URL}/api/students`);
       setStudents(response.data);
     } catch (error) {
       console.error("Error fetching students:", error);
