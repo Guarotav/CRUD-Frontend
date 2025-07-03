@@ -34,6 +34,7 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
       </div>
       <p>Email: {student.email}</p>
       <p>Campus: {student.CampusId}</p>
+      <Link to={`/edit-students/${student.id}`}> Edit </Link>
     </div>
   );
 };

@@ -11,8 +11,8 @@ import SingleCampus from "./components/SingleCampus";
 import SingleStudent from "./components/SingleStudent";
 import HomePage from "./components/Homepage";
 import axios from "axios";
-
-
+import EditCampus from "./components/EditCampus";
+import EditStudent from "./components/EditStudent";
 
 const App = () => {
   // Initialize state
@@ -60,6 +60,8 @@ const App = () => {
           <Route path="/add-student" element={<AddStudent campuses = {campuses} fetchAllStudents={fetchAllStudents}/>} />
           <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
           <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/edit-students/:id" element={<EditStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
+          <Route path="/edit-campuses/:id" element={<EditCampus campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
         </Routes>
       </div>
     </div>
