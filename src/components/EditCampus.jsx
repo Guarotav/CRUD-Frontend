@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
-const EditCampus = () => {
+const EditCampus = ({ fetchAllCampuses }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const campusId = Number(id);
 
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
-  const [url, setImageUrl] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [description, setDescription] = useState("");
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const EditCampus = () => {
       description,
     };
     await axios.patch(`http://localhost:8080/api/campuses/${campusId}`,updatedCampus);
+    fetchAllCampuses();
     navigate("/all-campuses");
   };
 
@@ -58,7 +59,7 @@ const EditCampus = () => {
         <input
           type="url"
           placeholder="Image URL"
-          value={url}
+          value={imageUrl}
           onChange={(e) => setImageUrl(e.target.value)}
         />
         <textarea
