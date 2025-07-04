@@ -2,6 +2,7 @@ import React from "react";
 import CampusCard from "./CampusCard";
 import StudentCard from "./StudentCard";
 import { useParams, useNavigate } from "react-router";
+import axios from "axios";
 
 const SingleCampus = ({ campuses, students, fetchAllCampuses, fetchAllStudents }) => {
   const { id } = useParams();
@@ -21,11 +22,12 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses, fetchAllStudents }
   const handleDeleteSelectedCampus = async () => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/tasks/${selectedCampus.id}`
+        `http://localhost:8080/api/campuses/${selectedCampus.id}`
       );
-      fetchAllTasks();
+      fetchAllCampuses();
+      navigate("/all-campuses")
     } catch (error) {
-      console.error("Error deleting task:", error);
+      console.error("Error deleting campus:", error);
     }
   };
 
