@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-// import "./AddTaskStyles.css";
+import "./AddCampus.css";
 import { useNavigate } from "react-router";
 
 /* This component renders a form that the user can fill out to add a campus to the database.
@@ -35,7 +35,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
         address,
         description,
       });
-      fetchAllCampuses(); 
+      fetchAllCampuses();
       navigate("/"); // navigate to homepage after submission
     } catch (error) {
       console.error("Error adding campus:", error);
@@ -43,8 +43,9 @@ const AddCampus = ({ fetchAllCampuses }) => {
   };
 
   return (
+    <div className = "wholePage">
     <div className="add-task-container">
-      <h1>Add a campus</h1>
+      <h1 id = "title">Add a campus</h1>
       <form onSubmit={handleSubmit} className="add-task-form">
         <input
           type="text"
@@ -52,7 +53,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
-        <input 
+        <input
           type="url"
           placeholder="Image url"
           value={image}
@@ -70,6 +71,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
         />
         <button type="submit">Add</button>
       </form>
+    </div>
     </div>
   );
 };

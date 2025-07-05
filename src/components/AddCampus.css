@@ -1,0 +1,55 @@
+.wholePage {
+  background-color: #543c13;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.add-task-container {
+  background-color: #796342;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid #3c2d50;
+  padding: 2rem;
+  border-radius: 10px;
+}
+
+.add-task-container label {
+  margin-bottom: 4px;
+  font-weight: bold;
+  display: block;
+}
+#title {
+  color: #000000;
+  font-family: "Arial ", sans-serif;
+  font-weight: normal;
+  font-size: 32px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.add-task-container input,
+.add-task-container textarea,
+.add-task-container select {
+  display: block;
+  margin-bottom: 12px;
+  padding: 10px;
+  width: 300px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #b2a38e;
+  color: #000000;
+}
+
+.add-task-container button {
+  margin-top: 10px;
+  padding: 10px 16px;
+  background-color: #b2a38e;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0;
+}
