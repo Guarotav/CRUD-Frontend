@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import "./StudentCard.css";
 import { Link } from "react-router-dom";
@@ -17,6 +17,10 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
       console.error("Error completing task:", err);
     }
   };
+
+  useEffect(() => {
+          fetchAllStudents();
+        }, []);
 
 //const selectedStudent = students.find((student) => student.id === id);
 // const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
