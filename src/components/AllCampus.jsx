@@ -1,6 +1,7 @@
 import React from "react";
 import CampusCard from "./CampusCard"
 import {Link} from "react-router-dom";
+import "./AllCampus.css";
 
 
 
@@ -8,7 +9,7 @@ const AllCampus = ({campuses, students, fetchAllCampuses}) =>{
 
 
 return (
-<div>
+<div className="allcampus-container">
     <h2> Campuses </h2>
 {campuses.length > 0 ? (
         campuses.map((campus) => (
