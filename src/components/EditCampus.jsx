@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const EditCampus = ({ fetchAllCampuses }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -13,17 +15,19 @@ const EditCampus = ({ fetchAllCampuses }) => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-  const fetchCampus = async () => {
-    const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
-    const campus = res.data;
-    setName(campus.name || "");
-    setAddress(campus.address || "");
-    setImageUrl(campus.url || "");  
-    setDescription(campus.description || "");
-  };
+    const fetchCampus = async () => {
+      const res = await axios.get(
+        `${API_URL}/api/campuses/${campusId}`
+      );
+      const campus = res.data;
+      setName(campus.name || "");
+      setAddress(campus.address || "");
+      setImageUrl(campus.url || "");
+      setDescription(campus.description || "");
+    };
 
-  fetchCampus();
-}, [campusId]);
+    fetchCampus();
+  }, [campusId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +37,10 @@ const EditCampus = ({ fetchAllCampuses }) => {
       imageUrl,
       description,
     };
-    await axios.patch(`http://localhost:8080/api/campuses/${campusId}`,updatedCampus);
-    fetchAllCampuses();
+    await axios.patch(
+      `${API_URL}/api/campuses/${campusId}`,
+      updatedCampus
+    );
     navigate("/all-campuses");
   };
 

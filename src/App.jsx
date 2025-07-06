@@ -14,6 +14,9 @@ import axios from "axios";
 import EditCampus from "./components/EditCampus";
 import EditStudent from "./components/EditStudent";
 
+
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const App = () => {
   // Initialize state
   const [campuses, setCampuses] = useState([]);
@@ -22,7 +25,7 @@ const App = () => {
   // Request campus data
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses");
+      const response = await axios.get(`${API_URL}/api/campuses`);
       setCampuses(response.data);
     } catch (error) {
       console.error("Error fetching campuses:", error);
@@ -42,25 +45,84 @@ const App = () => {
   }
 
   useEffect(() => {
-      fetchAllCampuses();
-      fetchAllStudents();
-    }, []);
+    fetchAllCampuses();
+    fetchAllStudents();
+  }, []);
 
   return (
     <div>
       <NavBar />
       <div className="app">
+        <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
-          <Route path="/all-students" element={<AllStudents campuses = {campuses} students = {students} fetchAllCampuses = {fetchAllCampuses} fetchAllStudents={fetchAllStudents} />} />
-          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/add-student" element={<AddStudent campuses = {campuses} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/edit-students/:id" element={<EditStudent campuses = {campuses} fetchAllStudents = {fetchAllStudents}/>} />
-          <Route path="/edit-campuses/:id" element={<EditCampus fetchAllCampuses = {fetchAllCampuses} />} />
+          <Route
+            path="/all-campuses"
+            element={
+              <AllCampus
+                campuses={campuses}
+                students={students}
+                fetchAllCampuses={fetchAllCampuses}
+              />
+            }
+          />
+          <Route
+            path="/all-students"
+            element={
+              <AllStudents
+                campuses={campuses}
+                students={students}
+                fetchAllCampuses={fetchAllCampuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/add-campus"
+            element={<AddCampus fetchAllCampuses={fetchAllCampuses} />}
+          />
+          <Route
+            path="/add-student"
+            element={
+              <AddStudent
+                campuses={campuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/campus/:id"
+            element={
+              <SingleCampus
+                campuses={campuses}
+                students={students}
+                fetchAllStudents={fetchAllStudents}
+                fetchAllCampuses={fetchAllCampuses}
+              />
+            }
+          />
+          <Route
+            path="/students/:id"
+            element={
+              <SingleStudent
+                campuses={campuses}
+                students={students}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/edit-students/:id"
+            element={
+              <EditStudent
+                campuses={campuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route path="/edit-campuses/:id" element={<EditCampus />} />
         </Routes>
+        </div>
       </div>
     </div>
   );

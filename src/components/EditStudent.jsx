@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const EditStudent = ({ campuses, fetchAllStudents }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
 
   useEffect(() => {
     console.log("Fetching student with ID:", studentId);
-    axios.get(`http://localhost:8080/api/students/${studentId}`).then((res) => {
+    axios.get(`${API_URL}/api/students/${studentId}`).then((res) => {
       console.log("Fetched student:", res.data);
       const student = res.data;
       setFirstName(student.firstName || "");
@@ -38,7 +40,10 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
       gpa: Number(gpa),
       CampusId: Number(campusId),
     };
-    axios.patch(`http://localhost:8080/api/students/${studentId}`, updatedStudent);
+    axios.patch(
+      `${API_URL}/api/students/${studentId}`,
+      updatedStudent
+    );
     fetchAllStudents();
     navigate("/all-students");
   };
@@ -51,19 +56,19 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
           type="text"
           placeholder="First Name"
           value={firstName}
-          onChange={e => setFirstName(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={e => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="number"
@@ -72,24 +77,29 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
           max="4"
           placeholder="GPA"
           value={gpa}
-          onChange={e => setGpa(e.target.value)}
+          onChange={(e) => setGpa(e.target.value)}
         />
         <input
           type="url"
           placeholder="Image URL"
           value={image}
-          onChange={e => setImage(e.target.value)}
+          onChange={(e) => setImage(e.target.value)}
         />
-        <select value={campusId} onChange={e => setCampusId(Number(e.target.value))}>
+        <select
+          value={campusId}
+          onChange={(e) => setCampusId(Number(e.target.value))}
+        >
           <option>Select a campus:</option>
-          {campuses.map(campus => (
-            <option key={campus.id} value={campus.id}>{campus.name}</option>
+          {campuses.map((campus) => (
+            <option key={campus.id} value={campus.id}>
+              {campus.name}
+            </option>
           ))}
         </select>
         <button type="submit">Update Student</button>
       </form>
     </div>
-    );
+  );
 };
 
 export default EditStudent;

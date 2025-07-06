@@ -19,8 +19,8 @@ const AllStudents = ({ campuses, students, fetchAllCampuses, fetchAllStudents })
         students.map((student) => (
           <StudentCard
             key={student.id}
-            campuses = {campuses}
-            student = {student}
+            campuses={campuses}
+            student={student}
             fetchAllStudents={fetchAllStudents}
           />
         ))

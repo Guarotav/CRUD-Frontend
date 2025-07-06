@@ -14,6 +14,8 @@ Parameters:
  JSX form that allows user to provide a name and address, which are saved to the database.
 */
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const AddCampus = ({ fetchAllCampuses }) => {
   // Initialize state to hold user input
   const [name, setName] = useState("");
@@ -29,7 +31,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new campus to the database
     try {
-      await axios.post("http://localhost:8080/api/campuses", {
+      await axios.post(`${API_URL}/api/campuses`, {
         name,
         image,
         address,
@@ -77,3 +79,4 @@ const AddCampus = ({ fetchAllCampuses }) => {
 };
 
 export default AddCampus;
+// test

@@ -15,6 +15,8 @@ Parameters:
  which are saved to the database.
 */
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const AddStudent = ({ campuses, fetchAllStudents }) => {
   // Initialize state to hold user input
   const [firstName, setFirstName] = useState("");
@@ -27,21 +29,20 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
   // Enable navigation using React-Router
   let navigate = useNavigate();
 
-
   // Handler for form submission
   const handleSubmit = async (event) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new student to the database
     try {
-      await axios.post("http://localhost:8080/api/students", {
+      await axios.post(`${API_URL}/api/students`, {
         firstName,
         lastName,
         email,
         image,
-        gpa: Number(gpa),
-        CampusId: Number(campusId),
+        gpa: (gpa),
+        CampusId: parseFloat(campusId),
       });
-      fetchAllStudents(); 
+      fetchAllStudents();
       navigate("/"); // navigate to homepage after submission
     } catch (error) {
       console.error("Error adding student:", error);
@@ -49,9 +50,9 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
   };
 
   return (
-    <div className="add-task-container">
+    <div className="add-student-container">
       <h1>Add a student</h1>
-      <form onSubmit={handleSubmit} className="add-task-form">
+      <form onSubmit={handleSubmit} className="add-student-form">
         <input
           type="text"
           placeholder="First Name"
@@ -70,7 +71,7 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        <input 
+        <input
           type="number"
           step="0.1"
           min="0"
@@ -79,7 +80,7 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
           value={gpa}
           onChange={(e) => setGpa(e.target.value)}
         />
-        <input 
+        <input
           type="url"
           placeholder="Image url"
           value={image}
@@ -87,9 +88,11 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
         />
         <select value={campusId} onChange={(e) => setCampusId(e.target.value)}>
           <option>Select a campus:</option>
-          {campuses.map((campus) => 
-            <option key={campus.id} value={campus.id}>{campus.name}</option>
-          )}
+          {campuses.map((campus) => (
+            <option key={campus.id} value={campus.id}>
+              {campus.name}
+            </option>
+          ))}
         </select>
         <button type="submit">Add</button>
       </form>
