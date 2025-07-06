@@ -1,7 +1,7 @@
 .campus-card {
   background-color: #b2a38e;
-  margin: 16px auto;              /* 1rem = 16px */
-  padding: 19.2px;                /* 1.2rem = 19.2px */
+  margin: 16px auto;              
+  padding: 19.2px;                
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
   max-width: 650px;
@@ -9,7 +9,7 @@
   flex-direction: column;
   align-items: flex-start;
   font-family: "Raleway", sans-serif;
-  font-size: 14.4px;              /* 0.9rem = 14.4px */
+  font-size: 14.4px;              
 }
 
 .campus-card-header {
@@ -30,4 +30,30 @@
   font-weight: bold;
   color: #3c2d50;
   font-size: 20px;
+}
+
+.campus-card-header-button p {
+  margin-top: -20px;
+  cursor: pointer;
+  color: #b22222;
+  user-select: none;
+  transition: color 0.3s ease;
+  font-size: 20px;
+}
+
+.campus-card-header-button p:hover {
+  color: #8b0000;
+}
+
+a {
+  text-decoration: none;
+  color: #543c13;
+  font-weight: bold;
+  margin-top: -10px;
+  display: inline-block;
+  font-size: 24px;
+}
+
+a:hover {
+  color: #3c2d50;
 }
