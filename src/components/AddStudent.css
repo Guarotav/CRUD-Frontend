@@ -15,3 +15,13 @@ h2 {
   font-weight: bold;
   transition: background-color 0.3s ease;
 }
+
+.add-btn:hover {
+    background-color:#b2a38e;
+    color: #000;
+}
+
+div {
+    max-width: 900px;
+    margin: 0 auto;
+}
