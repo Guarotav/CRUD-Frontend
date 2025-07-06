@@ -4,6 +4,8 @@ import StudentCard from "./StudentCard";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const SingleCampus = ({
   campuses,
   students,
@@ -27,7 +29,7 @@ const SingleCampus = ({
   const handleDeleteSelectedCampus = async () => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/campuses/${selectedCampus.id}`
+        `${API_URL}/api/campuses/${selectedCampus.id}`
       );
       fetchAllCampuses();
       navigate("/all-campuses")

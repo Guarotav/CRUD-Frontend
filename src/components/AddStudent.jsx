@@ -15,6 +15,8 @@ Parameters:
  which are saved to the database.
 */
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const AddStudent = ({ campuses, fetchAllStudents }) => {
   // Initialize state to hold user input
   const [firstName, setFirstName] = useState("");
@@ -32,13 +34,13 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
     event.preventDefault(); // prevent page refresh upon submission
     // Attempt to post a new student to the database
     try {
-      await axios.post("http://localhost:8080/api/students", {
+      await axios.post(`${API_URL}/api/students`, {
         firstName,
         lastName,
         email,
         image,
-        gpa: Number(gpa),
-        CampusId: Number(campusId),
+        gpa: (gpa),
+        CampusId: parseFloat(campusId),
       });
       fetchAllStudents();
       navigate("/"); // navigate to homepage after submission
@@ -48,9 +50,9 @@ const AddStudent = ({ campuses, fetchAllStudents }) => {
   };
 
   return (
-    <div className="add-task-container">
+    <div className="add-student-container">
       <h1>Add a student</h1>
-      <form onSubmit={handleSubmit} className="add-task-form">
+      <form onSubmit={handleSubmit} className="add-student-form">
         <input
           type="text"
           placeholder="First Name"

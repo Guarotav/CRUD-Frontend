@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const EditCampus = ({ fetchAllCampuses }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const EditCampus = ({ fetchAllCampuses }) => {
   useEffect(() => {
     const fetchCampus = async () => {
       const res = await axios.get(
-        `http://localhost:8080/api/campuses/${campusId}`
+        `${API_URL}/api/campuses/${campusId}`
       );
       const campus = res.data;
       setName(campus.name || "");
@@ -36,7 +38,7 @@ const EditCampus = ({ fetchAllCampuses }) => {
       description,
     };
     await axios.patch(
-      `http://localhost:8080/api/campuses/${campusId}`,
+      `${API_URL}/api/campuses/${campusId}`,
       updatedCampus
     );
     navigate("/all-campuses");

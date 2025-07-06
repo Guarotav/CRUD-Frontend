@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
 import "./StudentCard.css";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
+
+const API_URL = process.env.API_URL || "http://localhost:8080";
 
 const StudentCard = ({ campuses, student, fetchAllStudents }) => {
   const params = useParams();
@@ -11,15 +13,19 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
   const handleDeleteStudent = async () => {
     try {
       console.log("Delete clicked for student id:", student.id);
-      await axios.delete(`http://localhost:8080/api/students/${student.id}`);
+      await axios.delete(`${API_URL}/api/students/${student.id}`);
       fetchAllStudents();
     } catch (err) {
       console.error("Error completing task:", err);
     }
   };
 
-  //const selectedStudent = students.find((student) => student.id === id);
-  // const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
+  useEffect(() => {
+          fetchAllStudents();
+        }, []);
+
+//const selectedStudent = students.find((student) => student.id === id);
+// const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
 
   return (
     <div className="student-card">

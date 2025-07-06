@@ -14,6 +14,9 @@ import axios from "axios";
 import EditCampus from "./components/EditCampus";
 import EditStudent from "./components/EditStudent";
 
+
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const App = () => {
   // Initialize state
   const [campuses, setCampuses] = useState([]);
@@ -22,7 +25,7 @@ const App = () => {
   // Request campus data
   async function fetchAllCampuses() {
     try {
-      const response = await axios.get("http://localhost:8080/api/campuses");
+      const response = await axios.get(`${API_URL}/api/campuses`);
       setCampuses(response.data);
     } catch (error) {
       console.error("Error fetching campuses:", error);

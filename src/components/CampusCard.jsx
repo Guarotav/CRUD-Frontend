@@ -3,10 +3,13 @@ import axios from "axios";
 import "./CampusCardStyles.css";
 import { Link } from "react-router";
 
+
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const CampusCard = ({ campus, students, fetchAllCampuses }) => {
   const handleDeleteCampus = async () => {
     try {
-      await axios.delete(`http://localhost:8080/api/campuses/${campus.id}`);
+      await axios.delete(`${API_URL}/api/campuses/${campus.id}`);
       fetchAllCampuses();
     } catch (err) {
       console.error("Error completing task:", err);

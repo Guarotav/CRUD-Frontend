@@ -2,6 +2,8 @@ import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const SingleStudent = ({ campuses, students, fetchAllStudents }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -15,7 +17,7 @@ const SingleStudent = ({ campuses, students, fetchAllStudents }) => {
   const handleDeleteStudent = async () => {
     try {
       await axios.delete(
-        `http://localhost:8080/api/students/${selectedStudent.id}`
+        `${API_URL}/api/students/${selectedStudent.id}`
       );
       await fetchAllStudents();
       navigate("/all-students");

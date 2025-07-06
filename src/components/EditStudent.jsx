@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 
+const API_URL = process.env.API_URL || "http://localhost:8080";
+
 const EditStudent = ({ campuses, fetchAllStudents }) => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -16,7 +18,7 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
 
   useEffect(() => {
     console.log("Fetching student with ID:", studentId);
-    axios.get(`http://localhost:8080/api/students/${studentId}`).then((res) => {
+    axios.get(`${API_URL}/api/students/${studentId}`).then((res) => {
       console.log("Fetched student:", res.data);
       const student = res.data;
       setFirstName(student.firstName || "");
@@ -39,7 +41,7 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
       CampusId: Number(campusId),
     };
     axios.patch(
-      `http://localhost:8080/api/students/${studentId}`,
+      `${API_URL}/api/students/${studentId}`,
       updatedStudent
     );
     fetchAllStudents();

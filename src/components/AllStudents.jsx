@@ -1,19 +1,17 @@
 //Include a delete button
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import StudentCard from "./StudentCard";
 
-const AllStudents = ({
-  campuses,
-  students,
-  fetchAllCampuses,
-  fetchAllStudents,
-}) => {
-  console.log(
-    "AllStudents rendering, students:",
-    students.map((s) => s.id)
-  );
+const AllStudents = ({ campuses, students, fetchAllCampuses, fetchAllStudents }) => {
+  console.log("AllStudents rendering, students:", students.map(s => s.id));
+  
+  useEffect(() => {
+        fetchAllCampuses();
+        fetchAllStudents();
+      }, []);
+
   return (
     <div>
       <h2> Students </h2>
