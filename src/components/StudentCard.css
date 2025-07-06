@@ -22,4 +22,17 @@
 .student-card-header h2 {
   margin: 0;
   color: #3e1354;
+  font-size: 19.2px;
+}
+
+.student-card-header-button p {
+  cursor: pointer;
+  color: #b22222;
+  user-select: none;
+  transition: color 0.3s ease;
+  font-size: 16px;
+}
+
+.student-card-header-button p:hover {
+  color: #8b0000;
 }
