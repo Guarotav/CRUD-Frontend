@@ -10,7 +10,7 @@ const AllCampus = ({campuses, students, fetchAllCampuses}) =>{
 
 return (
 <div className="allcampus-container">
-    <h2> Campuses </h2>
+    <h1> Campuses </h1>
 {campuses.length > 0 ? (
         campuses.map((campus) => (
           <CampusCard key={campus.id} campus ={campus} students = {students} fetchAllCampuses={fetchAllCampuses} />

@@ -1,0 +1,13 @@
+.allcampus-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.allcampus-container h2 {
+  font-size: 2.5rem;
+  color: #3e1354;
+  margin-bottom: 2rem;
+}
