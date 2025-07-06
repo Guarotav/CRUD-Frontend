@@ -38,7 +38,10 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
       gpa: Number(gpa),
       CampusId: Number(campusId),
     };
-    axios.patch(`http://localhost:8080/api/students/${studentId}`, updatedStudent);
+    axios.patch(
+      `http://localhost:8080/api/students/${studentId}`,
+      updatedStudent
+    );
     fetchAllStudents();
     navigate("/all-students");
   };
@@ -51,19 +54,19 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
           type="text"
           placeholder="First Name"
           value={firstName}
-          onChange={e => setFirstName(e.target.value)}
+          onChange={(e) => setFirstName(e.target.value)}
         />
         <input
           type="text"
           placeholder="Last Name"
           value={lastName}
-          onChange={e => setLastName(e.target.value)}
+          onChange={(e) => setLastName(e.target.value)}
         />
         <input
           type="email"
           placeholder="Email"
           value={email}
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
         />
         <input
           type="number"
@@ -72,24 +75,29 @@ const EditStudent = ({ campuses, fetchAllStudents }) => {
           max="4"
           placeholder="GPA"
           value={gpa}
-          onChange={e => setGpa(e.target.value)}
+          onChange={(e) => setGpa(e.target.value)}
         />
         <input
           type="url"
           placeholder="Image URL"
           value={image}
-          onChange={e => setImage(e.target.value)}
+          onChange={(e) => setImage(e.target.value)}
         />
-        <select value={campusId} onChange={e => setCampusId(Number(e.target.value))}>
+        <select
+          value={campusId}
+          onChange={(e) => setCampusId(Number(e.target.value))}
+        >
           <option>Select a campus:</option>
-          {campuses.map(campus => (
-            <option key={campus.id} value={campus.id}>{campus.name}</option>
+          {campuses.map((campus) => (
+            <option key={campus.id} value={campus.id}>
+              {campus.name}
+            </option>
           ))}
         </select>
         <button type="submit">Update Student</button>
       </form>
     </div>
-    );
+  );
 };
 
 export default EditStudent;

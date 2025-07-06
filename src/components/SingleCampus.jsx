@@ -4,7 +4,12 @@ import StudentCard from "./StudentCard";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
 
-const SingleCampus = ({ campuses, students, fetchAllCampuses, fetchAllStudents }) => {
+const SingleCampus = ({
+  campuses,
+  students,
+  fetchAllCampuses,
+  fetchAllStudents,
+}) => {
   const { id } = useParams();
   const navigate = useNavigate();
   const campusId = Number(id);
@@ -31,24 +36,34 @@ const SingleCampus = ({ campuses, students, fetchAllCampuses, fetchAllStudents }
     }
   };
 
-return (
+  return (
     <div className="single-campus-page">
       {/*Campus Info Card*/}
       <div className="campus-info-card">
         <img
           src={selectedCampus.url}
           alt={selectedCampus.name}
-          style={{ width: "100%", maxWidth: "600px", borderRadius: "12px", objectFit: "cover" }}
+          style={{
+            width: "100%",
+            maxWidth: "600px",
+            borderRadius: "12px",
+            objectFit: "cover",
+          }}
         />
         <h2>{selectedCampus.name}</h2>
-        <p><strong>Address:</strong> {selectedCampus.address}</p>
+        <p>
+          <strong>Address:</strong> {selectedCampus.address}
+        </p>
         <p>{selectedCampus.description}</p>
         <button onClick={handleDeleteSelectedCampus}>🗑️ Delete Campus</button>
       </div>
 
       {/* Student Card */}
       <h3>Students in this Campus</h3>
-      <div className="students-container" style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div
+        className="students-container"
+        style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}
+      >
         {studentsInCampus.length > 0 ? (
           studentsInCampus.map((student) => (
             <StudentCard
@@ -65,6 +80,5 @@ return (
     </div>
   );
 };
-
 
 export default SingleCampus;

@@ -13,17 +13,19 @@ const EditCampus = ({ fetchAllCampuses }) => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-  const fetchCampus = async () => {
-    const res = await axios.get(`http://localhost:8080/api/campuses/${campusId}`);
-    const campus = res.data;
-    setName(campus.name || "");
-    setAddress(campus.address || "");
-    setImageUrl(campus.url || "");  
-    setDescription(campus.description || "");
-  };
+    const fetchCampus = async () => {
+      const res = await axios.get(
+        `http://localhost:8080/api/campuses/${campusId}`
+      );
+      const campus = res.data;
+      setName(campus.name || "");
+      setAddress(campus.address || "");
+      setImageUrl(campus.url || "");
+      setDescription(campus.description || "");
+    };
 
-  fetchCampus();
-}, [campusId]);
+    fetchCampus();
+  }, [campusId]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -33,8 +35,10 @@ const EditCampus = ({ fetchAllCampuses }) => {
       imageUrl,
       description,
     };
-    await axios.patch(`http://localhost:8080/api/campuses/${campusId}`,updatedCampus);
-    fetchAllCampuses();
+    await axios.patch(
+      `http://localhost:8080/api/campuses/${campusId}`,
+      updatedCampus
+    );
     navigate("/all-campuses");
   };
 

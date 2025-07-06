@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./StudentCard.css";
 import { Link } from "react-router-dom";
-import {useParams} from "react-router";
+import { useParams } from "react-router";
 
 const StudentCard = ({ campuses, student, fetchAllStudents }) => {
   const params = useParams();
@@ -18,14 +18,17 @@ const StudentCard = ({ campuses, student, fetchAllStudents }) => {
     }
   };
 
-//const selectedStudent = students.find((student) => student.id === id);
-// const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
+  //const selectedStudent = students.find((student) => student.id === id);
+  // const selectedStudentCampus = campuses.find((campus) => campus.id === selectedStudent.CampusID);
 
   return (
     <div className="student-card">
       <div className="student-card-header">
         <h2>
-          <Link to={`/students/${student.id}`}> {student.firstName} {student.lastName} </Link>
+          <Link to={`/students/${student.id}`}>
+            {" "}
+            {student.firstName} {student.lastName}{" "}
+          </Link>
         </h2>
         <p></p>
         <div className="student-card-header-button">

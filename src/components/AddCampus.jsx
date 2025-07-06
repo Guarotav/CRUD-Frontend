@@ -77,3 +77,4 @@ const AddCampus = ({ fetchAllCampuses }) => {
 };
 
 export default AddCampus;
+// test

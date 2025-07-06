@@ -4,8 +4,16 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import StudentCard from "./StudentCard";
 
-const AllStudents = ({ campuses, students, fetchAllCampuses, fetchAllStudents }) => {
-  console.log("AllStudents rendering, students:", students.map(s => s.id));
+const AllStudents = ({
+  campuses,
+  students,
+  fetchAllCampuses,
+  fetchAllStudents,
+}) => {
+  console.log(
+    "AllStudents rendering, students:",
+    students.map((s) => s.id)
+  );
   return (
     <div>
       <h2> Students </h2>
@@ -13,8 +21,8 @@ const AllStudents = ({ campuses, students, fetchAllCampuses, fetchAllStudents })
         students.map((student) => (
           <StudentCard
             key={student.id}
-            campuses = {campuses}
-            student = {student}
+            campuses={campuses}
+            student={student}
             fetchAllStudents={fetchAllStudents}
           />
         ))

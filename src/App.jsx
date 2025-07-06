@@ -42,25 +42,84 @@ const App = () => {
   }
 
   useEffect(() => {
-      fetchAllCampuses();
-      fetchAllStudents();
-    }, []);
+    fetchAllCampuses();
+    fetchAllStudents();
+  }, []);
 
   return (
     <div>
       <NavBar />
       <div className="app">
+        <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/all-campuses" element={<AllCampus campuses={campuses} students = {students} fetchAllCampuses={fetchAllCampuses} />} />
-          <Route path="/all-students" element={<AllStudents campuses = {campuses} students = {students} fetchAllCampuses = {fetchAllCampuses} fetchAllStudents={fetchAllStudents} />} />
-          <Route path="/add-campus" element={<AddCampus fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/add-student" element={<AddStudent campuses = {campuses} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/campus/:id" element={<SingleCampus campuses = {campuses} students = {students} fetchAllStudents = {fetchAllStudents} fetchAllCampuses={fetchAllCampuses}/>} />
-          <Route path="/students/:id" element={<SingleStudent campuses = {campuses} students = {students} fetchAllStudents={fetchAllStudents}/>} />
-          <Route path="/edit-students/:id" element={<EditStudent campuses = {campuses} fetchAllStudents = {fetchAllStudents}/>} />
-          <Route path="/edit-campuses/:id" element={<EditCampus fetchAllCampuses = {fetchAllCampuses} />} />
+          <Route
+            path="/all-campuses"
+            element={
+              <AllCampus
+                campuses={campuses}
+                students={students}
+                fetchAllCampuses={fetchAllCampuses}
+              />
+            }
+          />
+          <Route
+            path="/all-students"
+            element={
+              <AllStudents
+                campuses={campuses}
+                students={students}
+                fetchAllCampuses={fetchAllCampuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/add-campus"
+            element={<AddCampus fetchAllCampuses={fetchAllCampuses} />}
+          />
+          <Route
+            path="/add-student"
+            element={
+              <AddStudent
+                campuses={campuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/campus/:id"
+            element={
+              <SingleCampus
+                campuses={campuses}
+                students={students}
+                fetchAllStudents={fetchAllStudents}
+                fetchAllCampuses={fetchAllCampuses}
+              />
+            }
+          />
+          <Route
+            path="/students/:id"
+            element={
+              <SingleStudent
+                campuses={campuses}
+                students={students}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route
+            path="/edit-students/:id"
+            element={
+              <EditStudent
+                campuses={campuses}
+                fetchAllStudents={fetchAllStudents}
+              />
+            }
+          />
+          <Route path="/edit-campuses/:id" element={<EditCampus />} />
         </Routes>
+        </div>
       </div>
     </div>
   );
