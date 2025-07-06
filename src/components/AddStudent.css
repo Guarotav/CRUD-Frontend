@@ -1,0 +1,27 @@
+h2 {
+  text-align: center;
+  margin: 1rem 0;
+  color: #543c13;
+}
+
+.add-btn {
+  display: inline-block;
+  background-color: #543c13;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  margin: 1rem auto;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color:#b2a38e;
+    color: #000;
+}
+
+div {
+    max-width: 900px;
+    margin: 0 auto;
+}

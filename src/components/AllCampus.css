@@ -1,0 +1,36 @@
+.allcampus-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+.allcampus-container h2 {
+  font-size: 2.5rem;
+  color: #3e1354;
+  margin-bottom: 2rem;
+}
+
+.campus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.add-btn {
+  display: inline-block;
+  background-color: #543c13;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+    background-color: #b2a38e;
+    color: #000;
+}
