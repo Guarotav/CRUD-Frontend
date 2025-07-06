@@ -11,3 +11,10 @@
   color: #3e1354;
   margin-bottom: 2rem;
 }
+
+.campus-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
