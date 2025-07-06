@@ -36,3 +36,10 @@
 .student-card-header-button p:hover {
   color: #8b0000;
 }
+
+.student-card p {
+  color:#3c2d50;
+  margin: 8px 0;
+  font-size: 16pc;
+  font-weight: 500;
+}
