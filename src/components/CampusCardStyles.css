@@ -18,3 +18,16 @@
   justify-content: space-between;
   align-items: center;
 }
+
+.campus-card-header h2 {
+  margin: 0;
+  color: #3e1354;
+  font-size: 19.2px;              
+}
+
+.campus-card-header p {
+  margin-top: -20px;
+  font-weight: bold;
+  color: #3c2d50;
+  font-size: 20px;
+}
