@@ -1,5 +1,6 @@
 import React from "react";
 import CampusCard from "./CampusCard";
+import "./AllCampus.css";
 import { Link } from "react-router-dom";
 
 const AllCampus = ({ campuses, students, fetchAllCampuses }) => {
