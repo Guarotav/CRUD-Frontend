@@ -33,7 +33,7 @@ const AddCampus = ({ fetchAllCampuses }) => {
     try {
       await axios.post(`${API_URL}/api/campuses`, {
         name,
-        image,
+        url: image,
         address,
         description,
       });
