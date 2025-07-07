@@ -17,12 +17,6 @@
   gap: 1rem;
 }
 
-.add-task-container label {
-  margin-bottom: 4px;
-  font-weight: bold;
-  display: block;
-}
-
 #title {
   font-family: "Raleway", sans-serif;
   text-align: center;
