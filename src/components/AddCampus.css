@@ -9,11 +9,12 @@
 }
 
 .add-task-container {
-  background-color: #796342;
-  margin-bottom: 3rem;
-  border-bottom: 1px solid #3c2d50;
+  max-width: 600px;
+  margin: 2rem auto;
   padding: 2rem;
+  background: #fdf9f3;
   border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .add-task-container label {
