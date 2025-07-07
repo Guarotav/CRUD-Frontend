@@ -1,36 +1,32 @@
 .student-card {
+  margin-top: 20px;
   background-color: #b2a38e;
-  margin: 16px auto;
-  padding: 19.2px;
+  padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   max-width: 400px;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   font-family: "Raleway", sans-serif;
-  font-size: 14.4px;
+  gap:0.5rem;
 }
 
 .student-card-header {
-  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .student-card-header h2 {
-  margin: 0;
   color: #3e1354;
-  font-size: 19.2px;
+  font-size: 1.25rem;
 }
 
 .student-card-header-button p {
   cursor: pointer;
   color: #b22222;
-  user-select: none;
   transition: color 0.3s ease;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 .student-card-header-button p:hover {
@@ -39,18 +35,14 @@
 
 .student-card p {
   color:#3c2d50;
-  margin: 8px 0;
-  font-size: 16pc;
-  font-weight: 500;
+  font-size: 1rem;
 }
 
 a {
   text-decoration: none;
   color: #543c13;
   font-weight: bold;
-  margin-top:12px;
-  display: inline-block;
-  font-size: 16px;
+  font-size: 1rem;
 }
 
 a:hover {

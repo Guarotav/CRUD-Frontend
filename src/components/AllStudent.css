@@ -1,0 +1,30 @@
+.allstudent-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  text-align: center;
+  font-family: "Raleway", sans-serif;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #3e1354;
+  margin-bottom: 1.5rem;
+}
+
+.add-btn {
+  margin-top: 2rem;
+  display: inline-block;
+  background-color: #543c13;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.add-btn:hover {
+  background-color: #b2a38e;
+  color: #000;
+}

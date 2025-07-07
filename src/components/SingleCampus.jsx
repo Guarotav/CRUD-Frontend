@@ -3,6 +3,7 @@ import CampusCard from "./CampusCard";
 import StudentCard from "./StudentCard";
 import { useParams, useNavigate } from "react-router";
 import axios from "axios";
+import "./SingleCampus.css";
 
 const API_URL = process.env.API_URL || "http://localhost:8080";
 

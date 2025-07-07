@@ -1,15 +1,8 @@
-* {
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 .nav {
-  min-width: 700px;
-  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
+  padding: 1rem;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -18,26 +11,17 @@
 .nav a {
 color: #ffffff;
 text-decoration: none;
-font-size: 24px;
+font-size: 1.2rem;
+font-weight: bold;
 }
 
-.nav .active{
-  background-color: #b2a38e;
-  width: 25%;
-  text-align: center;
-  border-radius: 10px;
-  
+.nav a:hover {
+color: #b2a38e;
 }
 
-.nav a:hover{
-color: #1a0875b8;
-text-decoration: none;
-font-size: 24px;
+.nav .active {
+background-color: #b2a38e;
+color: #000;
+padding: 0.5rem 1rem;
+border-radius: 8px;
 }
-
-.nav a.active {
-background-color:c
-
-}
-
-/* testing */

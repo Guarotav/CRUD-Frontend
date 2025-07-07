@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
+import "./SingleStudent.css";
 
 const API_URL = process.env.API_URL || "http://localhost:8080";
 

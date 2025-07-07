@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 // import "./AddTaskStyles.css";
 import { useNavigate } from "react-router";
+import "./AddStudent.css";
 
 /* This component renders a form that the user can fill out to add a student to the database.
 The user must provide the first name, last name, and email address of the student.

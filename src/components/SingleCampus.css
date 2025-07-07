@@ -1,0 +1,28 @@
+.single-campus-page {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    font-family: "Raleway", sans-serif;
+}
+
+.campus-info-card {
+    background-color: #fdf9f3;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.campus-info-card img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 12px;
+    object-fit: cover;
+}
+
+.students-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
