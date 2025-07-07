@@ -13,6 +13,16 @@
   gap: 1rem;
 }
 
+input,
+select,
+textarea {
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
 button {
   background-color: #543c13;
   color: white;
@@ -27,9 +37,4 @@ button {
 button:hover {
   background-color: #b2a38e;
   color: #000;
-}
-
-div {
-    max-width: 900px;
-    margin: 0 auto;
 }
